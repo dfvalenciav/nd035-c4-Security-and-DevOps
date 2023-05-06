@@ -27,28 +27,32 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+    public Authentication attemptAuthentication(HttpServletRequest req,
+                                                HttpServletResponse res) throws AuthenticationException {
         try {
-            User credentialsUser = new ObjectMapper().readValue(request.getInputStream(), User.class);
+            User credentials = new ObjectMapper()
+                    .readValue(req.getInputStream(), User.class);
+
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            credentialsUser.getUsername(),
-                            credentialsUser.getPassword(),
+                            credentials.getUsername(),
+                            credentials.getPassword(),
                             new ArrayList<>()));
-        }catch (IOException e ) {
-          throw new RuntimeException (e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    protected void successfulAuthentication(HttpServletRequest request,
-                                            HttpServletResponse response,
+    protected void successfulAuthentication(HttpServletRequest req,
+                                            HttpServletResponse res,
                                             FilterChain chain,
-                                            Authentication authResult) throws IOException, ServletException {
-       String token = JWT.create()
-               .withSubject(((org.springframework.security.core.userdetails.User) authResult.getPrincipal()).getUsername())
-               .withExpiresAt(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
-               .sign(Algorithm.HMAC256(SecurityConstants.SECRET.getBytes()));
-        response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
+                                            Authentication auth) throws IOException, ServletException {
+
+        String token = JWT.create()
+                .withSubject(((org.springframework.security.core.userdetails.User) auth.getPrincipal()).getUsername())
+                .withExpiresAt(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
+                .sign(Algorithm.HMAC512(SecurityConstants.SECRET.getBytes()));
+        res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
     }
 }

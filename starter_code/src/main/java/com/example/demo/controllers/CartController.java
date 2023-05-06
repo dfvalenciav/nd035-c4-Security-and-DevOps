@@ -26,7 +26,7 @@ import java.util.stream.IntStream;
 @Component
 public class CartController {
 
-    public static final Logger log = LoggerFactory.getLogger(UserController.class);
+    public static final Logger log = LoggerFactory.getLogger(CartController.class);
 
     private UserRepository userRepository;
 
@@ -34,8 +34,6 @@ public class CartController {
 
     private ItemRepository itemRepository;
 
-    public CartController() {
-    }
 
     public CartController(UserRepository userRepository, CartRepository cartRepository, ItemRepository itemRepository) {
         this.userRepository = userRepository;

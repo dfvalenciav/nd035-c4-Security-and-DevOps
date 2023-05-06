@@ -1,0 +1,8 @@
+
+2023-05-04 21:27:55,820 INFO c.e.d.SareetaApplication [main] Starting SareetaApplication on DESKTOP-Q4IKIQU with PID 17392 (B:\PERSONAL\EDUCACION\UDACITY\2023_01_Java_backend\assigment\unit_4\ecommerce\nd035-c4-Security-and-DevOps\starter_code\target\classes started by Usuario in B:\PERSONAL\EDUCACION\UDACITY\2023_01_Java_backend\assigment\unit_4\ecommerce\nd035-c4-Security-and-DevOps)
+2023-05-04 21:27:55,851 DEBUG c.e.d.SareetaApplication [main] Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2023-05-04 21:27:55,853 INFO c.e.d.SareetaApplication [main] No active profile set, falling back to default profiles: default
+2023-05-04 21:28:29,661 DEBUG c.e.d.s.JWTAuthenticationVerficationFilter [main] Filter 'JWTAuthenticationVerficationFilter' configured for use
+2023-05-04 21:28:33,714 INFO c.e.d.SareetaApplication [main] Started SareetaApplication in 40.138 seconds (JVM running for 46.097)
+2023-05-04 21:28:37,566 INFO c.e.d.c.UserController [http-nio-8080-exec-9] Created user with username, Felipe.
+2023-05-04 21:29:10,048 DEBUG c.e.d.s.JWTAuthenticationFilter [http-nio-8080-exec-8] Request is to process authentication
