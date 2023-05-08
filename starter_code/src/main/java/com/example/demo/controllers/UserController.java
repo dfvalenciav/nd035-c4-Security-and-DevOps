@@ -33,6 +33,7 @@ public class UserController {
 
     @GetMapping("/id/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id) {
+        logger.info("USER_FOUNDED.");
         return ResponseEntity.of(userRepository.findById(id));
     }
 

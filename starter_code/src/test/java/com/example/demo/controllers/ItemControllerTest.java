@@ -24,7 +24,7 @@ public class ItemControllerTest {
 
     @Before
     public void setUp(){
-        itemController = new ItemController();
+        itemController = new ItemController(itemRepo);
         TestUtils.injectObjects(itemController, "itemRepository", itemRepo);
     }
 

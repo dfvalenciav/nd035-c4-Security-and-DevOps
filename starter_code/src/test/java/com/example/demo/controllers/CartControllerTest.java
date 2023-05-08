@@ -33,7 +33,7 @@ public class CartControllerTest {
 
     @Before
     public void setup () {
-       // cartController = new CartController();
+        cartController = new CartController(userRepository, cartRepository, itemRepository);
         TestUtils.injectObjects(cartController, "userRepository", userRepository);
         TestUtils.injectObjects(cartController, "cartRepository", cartRepository);
         TestUtils.injectObjects(cartController, "itemRepository", itemRepository);
